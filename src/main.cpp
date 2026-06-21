@@ -1,7 +1,9 @@
 #include<SDL3/SDL.h>
 #include<glm/common.hpp>
+#include <memory>
 #include<string>
 #include "game.h"
+#include "scene_main.h"
 
 int main(int,char**)
 {
@@ -9,7 +11,7 @@ int main(int,char**)
     if(!game.init("Goastspace",800,600)){
         return 1;
     }
+    game.setScene(std::make_unique<SceneMain>());
     game.run();
-    game.clean();
     return 0;
 }
