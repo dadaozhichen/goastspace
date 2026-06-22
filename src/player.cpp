@@ -2,7 +2,7 @@
 #include<memory>
 
 void Player::init() {
-    max_speed_=500.0f;
+    max_speed_=250.0f;
 }
 void Player::handleEvents(SDL_Event& event){
 
@@ -28,22 +28,28 @@ void Player::KeyboardControl(){
     auto currentKeyStates = SDL_GetKeyboardState(nullptr);
     if(currentKeyStates[SDL_SCANCODE_W]){
         velocity_.y=-max_speed_;
-        SDL_Log("W");
+        //SDL_Log("W");
     }
     if(currentKeyStates[SDL_SCANCODE_S])
     {
         velocity_.y=max_speed_;
-        SDL_Log("S");
+        //SDL_Log("S");
     }
     if(currentKeyStates[SDL_SCANCODE_A])
     {
         velocity_.x=-max_speed_;
-        SDL_Log("A");
+        //SDL_Log("A");
     }
     if(currentKeyStates[SDL_SCANCODE_D])
     {
         velocity_.x=max_speed_;
-        SDL_Log("D");
+        //SDL_Log("D");
     }
-
+    
+    auto final_v = sqrt(velocity_.x*velocity_.x+velocity_.y*velocity_.y);
+    if(final_v>max_speed_)
+    {
+        velocity_.x *=max_speed_/final_v;
+        velocity_.y *=max_speed_/final_v; 
+    }
 }

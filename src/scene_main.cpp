@@ -34,8 +34,9 @@ void SceneMain::clean()
 
 void SceneMain::renderBackground()
 {
-    auto start = -camera_position_;
-    auto end = world_size_-camera_position_;
+    glm::vec2 snap_cam = {std::floor(camera_position_.x),std::floor(camera_position_.y)};
+    auto start = -snap_cam;
+    auto end = world_size_-snap_cam;
     game.drawGrid(start,end,80.0f,{0.5,0.5,0.5,1.0});
     game.drawBoundary(start,end,5.0f,{1.0,1.0,1.0,1.0});
 }

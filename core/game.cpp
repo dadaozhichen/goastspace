@@ -37,8 +37,7 @@ void Game::run()
     while(is_running){
         auto start = SDL_GetTicksNS();
         handleEvents();
-        update(dt_);
-        render();
+
         auto end = SDL_GetTicksNS();
         auto elapsed = end-start;
         if(elapsed<frameDelay){
@@ -47,8 +46,9 @@ void Game::run()
         else{
             dt_ = elapsed/1e9;
         }
-
-        // SDL_Log("FPS:%lf",1.0/dt_);
+        update(dt_);
+        render();
+        //SDL_Log("FPS:%lf",1.0/dt_);
     }
 }
 
@@ -59,6 +59,7 @@ bool Game::init(std::string title, int width, int heigth)
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"SDL初始化失败:%s\n",SDL_GetError());
         return false;
     }
+    SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1");
     if(!MIX_Init())
     {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"SDL_mixer初始化失败:%s\n",SDL_GetError());

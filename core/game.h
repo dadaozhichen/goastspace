@@ -45,8 +45,8 @@ class Game
     
     Uint64 FPS_ = 60;
     Uint64 frameDelay = 0;
-    float dt_ = 0.0f;
-
+    float dt_ = 1.0f/static_cast<float>(FPS_);
+    
     std::unique_ptr<SDL_Window,SDL_WindowDeleter> window;
     std::unique_ptr<SDL_Renderer,SDL_RendererDeleter> renderer;
     std::unique_ptr<MIX_Mixer,MIX_MixerDeleter> mixer;
