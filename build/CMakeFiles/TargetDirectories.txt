@@ -1,3 +1,0 @@
-/home/zhuhk/code/cpp_project/goastspace/build/CMakeFiles/goastspace_Linux.dir
-/home/zhuhk/code/cpp_project/goastspace/build/CMakeFiles/edit_cache.dir
-/home/zhuhk/code/cpp_project/goastspace/build/CMakeFiles/rebuild_cache.dir
